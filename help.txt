@@ -1,0 +1,68 @@
+NICed Help
+
+FILE LOADING AND SAVING
+
+load <filepath>
+	Load the JSON or MAP format file at <filepath>. In order to save your maps to MAP files
+	you need to set the croctool path.
+
+save <filepath>
+	Save the JSON or MAP format file to <filepath>. In order to save your maps to the raw
+	(native) Croc map format, you need to have croctool available. If you don't specify a
+	file path, it will be saved to the same path as the file that you opened.
+
+TRACKS
+	You are given a slot that contains a single track piece's data. You can then update
+	any track piece index with the data at this slot, or load a current track piece's
+	data into this slot, in order to minipulate track pieces.
+	
+	To load a track at a given index for editing, use "track.use <index>". To save edits
+	to a track, use "track.set <index>". You can use different indexes for "use" and "set"
+	to save a track to a different index than the one you loaded it from.
+	
+	To make edits, use the "track.pos", "track.rot" and "track.tile" commands.
+	
+	To list all tracks in the map, use the "track.list" command.
+	
+	Example:
+		track.use 0
+		track.pos 1 1 2
+		track.show
+		track.set 2
+
+track.list
+	List track pieces in the current track
+
+track.remove <index>
+	Remove the track at <index>.
+
+track.use <index>
+	Set the current track style to match the one at <index>. Note that this is a completely
+	seprate track object and won't save until you use "track.set".
+
+track.set <index>
+	Set the track at <index> to match the current track data.
+
+track.pos <x> <y> <z>
+	Set the position for the current track data.
+
+track.rot <y-rot>
+	Set the rotation (along the upward (Y) axis) for the current track piece.
+
+track.tile <index>
+	Set the tile index for the current track to <index>.
+
+track.show
+	Print information about the current track data.
+
+GENERAL COMMANDS
+
+shell <command>
+	Run <command> in the system shell. This is nice to be able to quickly check things
+	without leaving NICed.
+
+help
+	Print this help message.
+
+exit
+	Exit NICed. Your work will not be saved until you use save!
